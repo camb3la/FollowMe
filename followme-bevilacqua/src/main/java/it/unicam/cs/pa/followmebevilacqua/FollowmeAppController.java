@@ -3,6 +3,7 @@ package it.unicam.cs.pa.followmebevilacqua;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -23,7 +24,8 @@ import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;
 
 public class FollowmeAppController implements Initializable {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> logger.info("tick")));
+    Timeline timeline;
+    GraphicsContext graphicsContext;
     private static final Logger logger = Logger.getLogger("it.unicam.cs.pa.followmebevilacqua");
 
     @FXML private JFXToggleButton runButton;
@@ -55,35 +57,58 @@ public class FollowmeAppController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        speedSlider.setValue(3.0);
+        initializeCanvas();
 
+        speedSlider.setValue(2.0);
+
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> drawRandomCircle()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setRate(speedSlider.getValue());
+    }
 
+    protected void initializeCanvas() {
         // Aspetta che il layout venga calcolato correttamente prima di creare e aggiungere il Canvas
-        // TODO crea un metodo a parte "initCanvas"
         Platform.runLater(() -> {
             Canvas canvas = new Canvas(mainPane.getWidth(), mainPane.getHeight() - 50);
             mainPane.getChildren().add(canvas);
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setFill(Color.web("aaaaaa"));
-            gc.fillRect(0, 0, canvas.getWidth(),  canvas.getHeight());
+            graphicsContext = canvas.getGraphicsContext2D();
+            graphicsContext.setFill(Color.web("aaaaaa"));
+            graphicsContext.fillRect(0, 0, canvas.getWidth(),  canvas.getHeight());
 
-            Stage stage = (Stage) mainPane.getScene().getWindow();
-            // Aggiungi un ChangeListener alla larghezza e altezza della Stage (finestra)
-            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-                double canvasWidth = newWidth.doubleValue();
-                canvas.setWidth(canvasWidth);
-                gc.clearRect(0, 0, canvasWidth, canvas.getHeight());
-                gc.fillRect(0, 0, canvasWidth, canvas.getHeight());
-            });
+            addPaneResizeListener(canvas);
 
-            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-                double canvasHeight = newHeight.doubleValue();
-                canvas.setHeight(canvasHeight - 50);
-                gc.clearRect(0, 0, canvas.getWidth(), canvasHeight);
-                gc.fillRect(0, 0, canvas.getWidth(), canvasHeight);
-            });
+            canvas.toBack();
         });
+    }
+
+    protected void addPaneResizeListener(Canvas canvas) {
+        Stage stage = (Stage) mainPane.getScene().getWindow();
+
+        // Aggiunge un ChangeListener alla larghezza e altezza dello Stage (finestra)
+        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+            double canvasWidth = newWidth.doubleValue();
+            canvas.setWidth(canvasWidth);
+            graphicsContext.clearRect(0, 0, canvasWidth, canvas.getHeight());
+            graphicsContext.fillRect(0, 0, canvasWidth, canvas.getHeight());
+        });
+        stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+            double canvasHeight = newHeight.doubleValue();
+            canvas.setHeight(canvasHeight - 50);
+            graphicsContext.clearRect(0, 0, canvas.getWidth(), canvasHeight);
+            graphicsContext.fillRect(0, 0, canvas.getWidth(), canvasHeight);
+        });
+    }
+
+    protected void drawRandomCircle() {
+        Random random = new Random();
+        double canvasWidth = graphicsContext.getCanvas().getWidth();
+        double canvasHeight = graphicsContext.getCanvas().getHeight();
+
+        double centerX = random.nextDouble() * (canvasWidth - 10) + 5; // Evita il bordo
+        double centerY = random.nextDouble() * (canvasHeight - 10) + 5; // Evita il bordo
+        double radius = 5;
+
+        graphicsContext.setFill(Color.BLUE);
+        graphicsContext.fillOval(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
     }
 }
