@@ -1,6 +1,5 @@
 package it.unicam.cs.pa.followmebevilacqua;
 
-
 import java.io.File;
 import java.net.URL;
 import java.util.Random;
@@ -22,6 +21,8 @@ import javafx.animation.Timeline;
 
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;
+
+import it.unicam.cs.pa.utilities.*;
 
 public class FollowmeAppController implements Initializable {
     Timeline timeline;
@@ -64,6 +65,9 @@ public class FollowmeAppController implements Initializable {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> drawRandomCircle()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setRate(speedSlider.getValue());
+
+        RobotCommand robotCommand;
+        ShapeData shapeData;
     }
 
     protected void initializeCanvas() {
