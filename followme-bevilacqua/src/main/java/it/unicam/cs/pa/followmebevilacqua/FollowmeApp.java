@@ -20,15 +20,7 @@ public class FollowmeApp extends Application {
     }
 
     public static void main(String[] args) {
-        /*if (args.length < 7){
-            throw new IllegalArgumentException("Parametri insufficienti");
-        }
-
-        int numeroRobots = Integer.parseInt(args[0]);
-
-         */
-        // Chiamata controllore Robot
-
+        
 
         launch();
     }

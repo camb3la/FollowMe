@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e81fa41a-262d-4600-b03e-0968bfc50eaa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/followme-bevilacqua/src/main/java/it/unicam/cs/pa/followmebevilacqua/FollowmeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/followme-bevilacqua/src/main/java/it/unicam/cs/pa/followmebevilacqua/FollowmeApp.java" afterDir="false" />
-    </list>
+    <list default="true" id="e81fa41a-262d-4600-b03e-0968bfc50eaa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
