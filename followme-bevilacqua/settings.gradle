@@ -1,3 +1,4 @@
 rootProject.name = "followme-bevilacqua"
 include 'utilities'
+include 'model'
 

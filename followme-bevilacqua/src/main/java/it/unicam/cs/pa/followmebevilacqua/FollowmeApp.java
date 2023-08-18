@@ -1,5 +1,7 @@
 package it.unicam.cs.pa.followmebevilacqua;
 
+import it.unicam.cs.pa.utilities.FollowMeParser;
+import it.unicam.cs.pa.utilities.FollowMeParserHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +20,16 @@ public class FollowmeApp extends Application {
     }
 
     public static void main(String[] args) {
+        /*if (args.length < 7){
+            throw new IllegalArgumentException("Parametri insufficienti");
+        }
+
+        int numeroRobots = Integer.parseInt(args[0]);
+
+         */
+        // Chiamata controllore Robot
+
+
         launch();
     }
 }
